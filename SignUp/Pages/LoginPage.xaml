@@ -9,9 +9,8 @@
         <StackLayout HorizontalOptions="CenterAndExpand" 
                      VerticalOptions="CenterAndExpand"
                      Padding="8">
-            <Label Text="Tell us who you are." 
-                   VerticalOptions="Center"/>
-            <controls:FacebookLoginButton/>
+            <Label Text="Tell us who you are." VerticalOptions="Center" x:Name="lblResult"/>
+            <controls:FacebookLoginButton BackgroundColor="Blue" TextColor="White" Text="Login with Facebook" x:Name="fbLoginButton"/>
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

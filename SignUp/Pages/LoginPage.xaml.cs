@@ -10,6 +10,11 @@ namespace SignUp.Pages
         public LoginPage()
         {
             InitializeComponent();
+
+			App.PostSuccessFacebookAction = token =>
+			{
+                
+			};
         }
     }
 }
