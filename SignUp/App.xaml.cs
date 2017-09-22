@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using SignUp.Pages;
+using Xamarin.Forms;
 
 namespace SignUp
 {
@@ -8,7 +9,8 @@ namespace SignUp
         {
             InitializeComponent();
 
-            MainPage = new SignUpPage();
+            // MainPage = new SignUpPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
