@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SignUp.Pages
 {
@@ -13,7 +10,9 @@ namespace SignUp.Pages
 
 			App.PostSuccessFacebookAction = token =>
 			{
-                
+                string message = string.Format("You are now logged in as: {0}", token);
+
+                lblResult.Text =  message;
 			};
         }
     }
