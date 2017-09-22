@@ -21,6 +21,8 @@ namespace SignUp.Droid.CustomRenderers
 			if (Control == null || facebookLoginButton == null)
 			{
 				facebookLoginButton = new Xamarin.Facebook.Login.Widget.LoginButton(Forms.Context);
+                facebookLoginButton.SetReadPermissions(new string[2] {"public_profile", "email"});
+
 				SetNativeControl(facebookLoginButton);
 			}
 		}

@@ -124,6 +124,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomRenderers\FacebookLoginButtonRenderer.cs" />
+    <Compile Include="FacebookHelper\FacebookCallback.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />
+    <Folder Include="FacebookHelper\" />
   </ItemGroup>
   <Import Project="..\SignUp\SignUp.projitems" Label="Shared" Condition="Exists('..\SignUp\SignUp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
