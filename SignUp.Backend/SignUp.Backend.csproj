@@ -120,6 +120,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\Startup.MobileApp.cs" />
+    <Compile Include="DataObjects\GroupItem.cs" />
+    <Compile Include="Models\MobileServiceContext.cs" />
+    <Compile Include="Controllers\GroupItemController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataObjects\" />
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
