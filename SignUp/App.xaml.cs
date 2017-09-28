@@ -1,4 +1,6 @@
-﻿using SignUp.Pages;
+﻿using SignUp.Abstractions;
+using SignUp.Pages;
+using SignUp.Services;
 using Xamarin.Forms;
 
 namespace SignUp
@@ -9,10 +11,16 @@ namespace SignUp
     public partial class App : Application
     {
         /// <summary>
-        /// Gets or sets the post success facebook action.
+        /// Gets or sets the post success facebook action - USED FROM iOS and not Android client app.
         /// </summary>
         /// <value>The post success facebook action.</value>
         public static System.Action<string> PostSuccessFacebookAction { get; set; }
+
+        /// <summary>
+        /// Needed to access Azure services
+        /// </summary>
+        /// <value>The cloud service.</value>
+        public static ICloudService CloudService { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SignUp.App"/> class.
@@ -21,7 +29,9 @@ namespace SignUp
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            CloudService = new AzureCloudService();
+
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         /// <summary>

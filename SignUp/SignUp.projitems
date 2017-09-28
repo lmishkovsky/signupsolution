@@ -25,6 +25,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\ICloudService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\ICloudTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\RowData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureCloudService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureCloudTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GroupItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
