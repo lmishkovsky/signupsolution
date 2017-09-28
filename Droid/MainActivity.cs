@@ -47,9 +47,10 @@ namespace SignUp.Droid
 			{
 				HandleSuccess = loginResult =>
 				{
-
 					var facebookToken = AccessToken.CurrentAccessToken.Token;
-					//Login here
+                    //Login here
+
+                    Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
 				},
 				HandleCancel = () =>
 				{
