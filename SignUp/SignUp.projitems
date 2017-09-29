@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ShowSignupsPage.xaml.cs">
       <DependentUpon>ShowSignupsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShowSignupsPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />

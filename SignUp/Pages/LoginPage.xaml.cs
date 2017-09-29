@@ -14,6 +14,8 @@ namespace SignUp.Pages
                 string message = string.Format("You are now logged in as: {0}", token);
 
                 lblResult.Text =  message;
+
+                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
 			};
         }
     }

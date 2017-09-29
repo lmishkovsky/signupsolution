@@ -35,6 +35,8 @@ namespace SignUp.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
 			#region [ Facebook ]
