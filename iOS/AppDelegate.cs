@@ -23,6 +23,8 @@ namespace SignUp.iOS
 
             global::Xamarin.Forms.Forms.Init();
 
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             LoadApplication(new App());
 
 			Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
