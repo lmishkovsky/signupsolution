@@ -45,6 +45,7 @@ namespace brightsoftsignupService
                     TokenHandler = config.GetAppServiceTokenHandler()
                 });
             }
+
             app.UseWebApi(config);
         }
     }

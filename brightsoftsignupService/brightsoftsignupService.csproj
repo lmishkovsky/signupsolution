@@ -155,6 +155,8 @@
     <Compile Include="Models\brightsoftsignupContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\GroupItemController.cs" />
+    <Compile Include="DataObjects\GroupItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

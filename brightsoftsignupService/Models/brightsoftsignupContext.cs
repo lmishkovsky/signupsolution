@@ -23,6 +23,7 @@ namespace brightsoftsignupService.Models
         } 
 
         public DbSet<TodoItem> TodoItems { get; set; }
+        // public DbSet<GroupItem> GroupItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
