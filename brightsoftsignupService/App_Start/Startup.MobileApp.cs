@@ -26,10 +26,10 @@ namespace brightsoftsignupService
                 .ApplyTo(config);
 
             // Use Entity Framework Code First to create database tables based on your DbContext
-            Database.SetInitializer(new brightsoftsignupInitializer());
+            // Database.SetInitializer(new brightsoftsignupInitializer());
 
             // To prevent Entity Framework from modifying your database schema, use a null database initializer
-            // Database.SetInitializer<brightsoftsignupContext>(null);
+            Database.SetInitializer<brightsoftsignupContext>(null);
 
             MobileAppSettingsDictionary settings = config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
