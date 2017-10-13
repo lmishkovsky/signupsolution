@@ -16,14 +16,30 @@ namespace brightsoftsignupService.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
+        /// <summary>
+        /// The name of the connection string.
+        /// </summary>
         private const string connectionStringName = "Name=MS_TableConnectionString";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:brightsoftsignupService.Models.brightsoftsignupContext"/> class.
+        /// </summary>
         public brightsoftsignupContext() : base(connectionStringName)
         {
+            
         } 
 
+        /// <summary>
+        /// Gets or sets the todo items.
+        /// </summary>
+        /// <value>The todo items.</value>
         public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<GroupItem> GroupItems { get; set; }
 
+        /// <summary>
+        /// Ons the model creating.
+        /// </summary>
+        /// <param name="modelBuilder">Model builder.</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(
