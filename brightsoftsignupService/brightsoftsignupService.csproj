@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
@@ -157,6 +158,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataObjects\GroupItem.cs" />
     <Compile Include="Controllers\GroupItemController.cs" />
+    <Compile Include="DataObjects\SignupItem.cs" />
+    <Compile Include="Extensions\GroupItemExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

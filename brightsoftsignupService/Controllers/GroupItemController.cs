@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
 using brightsoftsignupService.DataObjects;
+using brightsoftsignupService.Extensions;
 using brightsoftsignupService.Models;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Tables;
@@ -16,11 +17,13 @@ namespace brightsoftsignupService.Controllers
     /// </summary>
     public class GroupItemController : TableController<GroupItem>
     {
-        /// <summary>
-        /// Initialize the specified controllerContext.
-        /// </summary>
-        /// <returns>The initialize.</returns>
-        /// <param name="controllerContext">Controller context.</param>
+		// public string UserId => ((ClaimsPrincipal)User).FindFirst(ClaimTypes.NameIdentifier).Value;
+
+		/// <summary>
+		/// Initialize the specified controllerContext.
+		/// </summary>
+		/// <returns>The initialize.</returns>
+		/// <param name="controllerContext">Controller context.</param>
 		protected override void Initialize(HttpControllerContext controllerContext)
 		{
 			base.Initialize(controllerContext);
@@ -29,9 +32,16 @@ namespace brightsoftsignupService.Controllers
 		}
 
 		// GET tables/GroupItem
-		public IQueryable<GroupItem> GetAllGroupItem()
+		//public IQueryable<GroupItem> GetAllGroupItem()
+		//{
+		//	return Query();
+		//}
+
+		// GET tables/GroupItem
+		public IQueryable<GroupItem> GetAllGroupItem(string groupCode)
 		{
-			return Query();
+            // filter applied through an extension method
+            return Query().PerGroupCodeFilter(groupCode);
 		}
 
 		// GET tables/GroupItem/48D68C86-6EA6-4C25-AA33-223FC9A27959
