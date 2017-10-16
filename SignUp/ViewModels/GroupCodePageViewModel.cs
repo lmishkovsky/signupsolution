@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using SignUp.Abstractions;
+using SignUp.Models;
 using Xamarin.Forms;
 
 namespace SignUp.ViewModels
@@ -21,6 +22,8 @@ namespace SignUp.ViewModels
 
         Command btnCommand;
 
+        public string GroupCode { get; set; }
+
         public Command GroupCheckCommand => btnCommand ?? (btnCommand = new Command(async () => ExecuteGroupCheckCommand()));
 
         async Task ExecuteGroupCheckCommand()
@@ -31,8 +34,31 @@ namespace SignUp.ViewModels
 
             try 
             {
-                // check group code and move to next page
-                Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage());
+                // if group code was passed from the user
+                if (!String.IsNullOrEmpty(GroupCode))
+                {
+                    // get a reference to the group codes table
+                    var table = App.CloudService.GetTable<GroupItem>();
+
+                    // query for this group code
+                    var list = await table.GetTheMobileServiceTable().Where(groupItem => groupItem.GroupCode == GroupCode).ToListAsync();
+
+                    // if group code found
+                    if (list != null && list.Count > 0)
+                    {
+                        // navigate to next page
+                        Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage());
+                    }
+                    else {
+                        //await DisplayAlert("Alert", "You have been alerted", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Alert", "No such group! Try a differnt group code. Group codes are case sensitive.", "OK");
+                    }
+                }
+				else
+				{
+					//await DisplayAlert("Alert", "You have been alerted", "OK");
+					await Application.Current.MainPage.DisplayAlert("Alert", "Please enter a group code.", "OK");
+				}
             }
             catch (Exception ex) 
             {

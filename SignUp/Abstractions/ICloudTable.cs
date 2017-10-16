@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace SignUp.Abstractions
 {
@@ -12,5 +13,7 @@ namespace SignUp.Abstractions
 		Task DeleteItemAsync(T item);
 
 		Task<ICollection<T>> ReadAllItemsAsync();
+
+        IMobileServiceTable<T> GetTheMobileServiceTable();
 	}
 }

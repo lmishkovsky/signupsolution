@@ -32,10 +32,10 @@ namespace brightsoftsignupService.Controllers
 		}
 
 		// GET tables/GroupItem
-		//public IQueryable<GroupItem> GetAllGroupItem()
-		//{
-		//	return Query();
-		//}
+		public IQueryable<GroupItem> GetAllGroupItem()
+		{
+			return Query();
+		}
 
 		// GET tables/GroupItem
 		public IQueryable<GroupItem> GetAllGroupItem(string groupCode)

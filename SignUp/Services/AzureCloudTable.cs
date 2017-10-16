@@ -21,6 +21,10 @@ namespace SignUp.Services
         /// </summary>
 		IMobileServiceTable<T> table;
 
+        public IMobileServiceTable<T> GetTheMobileServiceTable() {
+            return this.table;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SignUp.Services.AzureCloudTable`1"/> class.
         /// </summary>

@@ -65,8 +65,9 @@ namespace SignUp.ViewModels
 			try
 			{
                 var table = App.CloudService.GetTable<GroupItem>();
-				var list = await table.ReadAllItemsAsync();
-				Items.Clear();
+                var list = await table.ReadAllItemsAsync();
+
+                Items.Clear();
 				foreach (var item in list)
 					Items.Add(item);
 			}
