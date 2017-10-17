@@ -8,6 +8,10 @@
         <StackLayout HorizontalOptions="CenterAndExpand" 
                      VerticalOptions="CenterAndExpand"
                      Padding="8">
+            <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Black" />
             <Label Text="What is your group code?" VerticalOptions="Center"/>
             <Entry Text="{Binding GroupCode, Mode=TwoWay}"></Entry>
             <Button BackgroundColor="Teal"

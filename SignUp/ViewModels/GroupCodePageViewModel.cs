@@ -51,7 +51,7 @@ namespace SignUp.ViewModels
                     }
                     else {
                         //await DisplayAlert("Alert", "You have been alerted", "OK");
-                        await Application.Current.MainPage.DisplayAlert("Alert", "No such group! Try a differnt group code. Group codes are case sensitive.", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Alert", "No such group! Try a different group code. Group codes are case sensitive.", "OK");
                     }
                 }
 				else

@@ -1,6 +1,7 @@
 ﻿using SignUp.Abstractions;
 using SignUp.Pages;
 using SignUp.Services;
+using Xamarin.Facebook;
 using Xamarin.Forms;
 
 namespace SignUp
@@ -31,7 +32,14 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-            MainPage = new NavigationPage(new LoginPage());
+            if (AccessToken.CurrentAccessToken == null)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else 
+            {
+                MainPage = new NavigationPage(new GroupCodePage());
+            }
         }
 
         /// <summary>
