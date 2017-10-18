@@ -8,6 +8,14 @@ namespace brightsoftsignupService.DataObjects
     /// </summary>
     public class SignupItem : EntityData
     {
-		
+		public string GroupCode { get; set; }
+
+		public bool EventDate { get; set; }
+
+		public string UserID { get; set; }
+
+        public string Name { get; set; }
+
+        public string Email { get; set; }
     }
 }

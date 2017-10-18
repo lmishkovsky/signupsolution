@@ -35,6 +35,7 @@ namespace brightsoftsignupService.Models
         /// <value>The todo items.</value>
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<GroupItem> GroupItems { get; set; }
+        public DbSet<SignupItem> SignupItems { get; set; }
 
         /// <summary>
         /// Ons the model creating.
