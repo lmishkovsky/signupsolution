@@ -32,8 +32,11 @@ namespace brightsoftsignupService.Controllers
 		}
 
 		// GET tables/GroupItem
+        // [Authorize]
 		public IQueryable<GroupItem> GetAllGroupItem()
 		{
+            // System.Diagnostics.Debug.WriteLine("this.User: ", this.User);
+
 			return Query();
 		}
 
