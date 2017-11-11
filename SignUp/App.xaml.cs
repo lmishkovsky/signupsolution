@@ -2,6 +2,7 @@
 using SignUp.Pages;
 using SignUp.Services;
 using Xamarin.Facebook;
+//using Xamarin.Facebook;
 using Xamarin.Forms;
 
 namespace SignUp
@@ -32,13 +33,17 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-            if (AccessToken.CurrentAccessToken == null)
+			// AccessToken.CurrentAccessToken is set by the login process for Android
+			// PostSuccessFacebookAction is set by the login process for iOS
+			if (AccessToken.CurrentAccessToken != null || PostSuccessFacebookAction != null)
             {
-                MainPage = new NavigationPage(new LoginPage());
+                // go directly to the group code page if used is already logged in
+                MainPage = new NavigationPage(new GroupCodePage());
             }
             else 
             {
-                MainPage = new NavigationPage(new GroupCodePage());
+                // stay on the login page if user is not logged in
+                MainPage = new NavigationPage(new LoginPage());
             }
         }
 
