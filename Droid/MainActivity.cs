@@ -50,7 +50,13 @@ namespace SignUp.Droid
 				HandleSuccess = loginResult =>
 				{
 					var facebookToken = AccessToken.CurrentAccessToken.Token;
-                    //Login here
+
+					// Login to the Azure Mobile Service here
+					//var token = new JObject();
+					//token["access_token"] = facebookToken;
+					//var user = await Client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+
+                    // Call the Facebook Graph API to obtains the user's name and email (if available) 
 
                     Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
 				},
