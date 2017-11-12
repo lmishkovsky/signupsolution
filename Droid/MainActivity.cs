@@ -10,6 +10,7 @@ using Android.OS;
 using Xamarin.Facebook;
 using SignUp.Droid.FacebookHelper;
 using Xamarin.Facebook.Login;
+using Org.Json;
 
 namespace SignUp.Droid
 {
@@ -20,7 +21,7 @@ namespace SignUp.Droid
               , ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation
               , Name = "solutions.brightsoft.signup.mainactivity"
              )]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, GraphRequest.IGraphJSONObjectCallback
     {
         ICallbackManager callbackManager;
 
@@ -50,6 +51,13 @@ namespace SignUp.Droid
 				HandleSuccess = loginResult =>
 				{
 					var facebookToken = AccessToken.CurrentAccessToken.Token;
+
+                    // Obtain the Facebook's user name and email 
+                    GraphRequest graphRequest = GraphRequest.NewMeRequest(AccessToken.CurrentAccessToken, this);
+                    Bundle parameters = new Bundle();
+                    parameters.PutString("fields", "id,name,email");
+                    graphRequest.Parameters = parameters;
+                    graphRequest.ExecuteAsync();
 
 					// Login to the Azure Mobile Service here
 					//var token = new JObject();
@@ -89,5 +97,10 @@ namespace SignUp.Droid
 
 			callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
 		}
+
+        void GraphRequest.IGraphJSONObjectCallback.OnCompleted(JSONObject json, GraphResponse response)
+        {
+            Console.WriteLine(json.ToString());
+        }
     }
 }
