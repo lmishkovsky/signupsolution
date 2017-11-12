@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Plugin.Settings;
 using SignUp.Abstractions;
 using SignUp.Models;
 using Xamarin.Forms;
@@ -13,9 +14,14 @@ namespace SignUp.ViewModels
     /// </summary>
     public class ShowSignupsPageViewModel : BaseViewModel
     {
-        /// <summary>
-        /// The items.
-        /// </summary>
+		string facebookID = string.Empty;
+		string facebookName = string.Empty;
+		string facebookEmail = string.Empty;
+        string groupCode = string.Empty;
+
+		/// <summary>
+		/// The items.
+		/// </summary>
 		ObservableCollection<GroupItem> items = new ObservableCollection<GroupItem>();
 
         /// <summary>
@@ -34,6 +40,11 @@ namespace SignUp.ViewModels
         public ShowSignupsPageViewModel()
         {
             Title = "Signups";
+
+            this.facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+            this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
+            this.facebookEmail = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookEmail, string.Empty);
+            this.groupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
 
             RefreshList();
         }

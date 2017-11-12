@@ -11,6 +11,8 @@ using Xamarin.Facebook;
 using SignUp.Droid.FacebookHelper;
 using Xamarin.Facebook.Login;
 using Org.Json;
+using Plugin.Settings;
+using Newtonsoft.Json.Linq;
 
 namespace SignUp.Droid
 {
@@ -100,7 +102,11 @@ namespace SignUp.Droid
 
         void GraphRequest.IGraphJSONObjectCallback.OnCompleted(JSONObject json, GraphResponse response)
         {
-            Console.WriteLine(json.ToString());
+            var facebookData = JObject.Parse(json.ToString());
+
+            CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookID, facebookData[SignUp.Constants.FacebookAttributes.ID] != null ? facebookData[SignUp.Constants.FacebookAttributes.ID].ToString() : string.Empty);
+            CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookName, facebookData[SignUp.Constants.FacebookAttributes.Name] != null ? facebookData[SignUp.Constants.FacebookAttributes.Name].ToString() : string.Empty);
+            CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookEmail, facebookData[SignUp.Constants.FacebookAttributes.Email] != null ? facebookData[SignUp.Constants.FacebookAttributes.Email].ToString() : string.Empty);
         }
     }
 }

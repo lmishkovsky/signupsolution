@@ -1,4 +1,5 @@
-﻿using SignUp.ViewModels;
+﻿using Plugin.Settings;
+using SignUp.ViewModels;
 using Xamarin.Forms;
 
 namespace SignUp.Pages

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Plugin.Settings;
 using SignUp.Abstractions;
 using SignUp.Models;
 using Xamarin.Forms;
@@ -18,6 +19,8 @@ namespace SignUp.ViewModels
         public GroupCodePageViewModel()
         {
             Title = "Group Code";
+
+            GroupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
         }
 
         Command btnCommand;
@@ -46,6 +49,9 @@ namespace SignUp.ViewModels
                     // if group code found
                     if (list != null && list.Count > 0)
                     {
+                        // save group code in user settings (so that user does not have to enter it every time)
+                        CrossSettings.Current.AddOrUpdateValue(Constants.CrossSettingsKeys.GroupCode, GroupCode);
+
                         // navigate to next page
                         Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage());
                     }

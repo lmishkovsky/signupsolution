@@ -2,7 +2,6 @@
 using SignUp.Pages;
 using SignUp.Services;
 using Xamarin.Facebook;
-//using Xamarin.Facebook;
 using Xamarin.Forms;
 
 namespace SignUp
