@@ -23,7 +23,7 @@
                            Padding="10"
                            VerticalOptions="CenterAndExpand">
                 <Label HorizontalOptions="FillAndExpand"
-                       Text="{Binding GroupCode}"
+                       Text="{Binding Name}"
                        TextColor="#272832" />
                 <Switch IsToggled="{Binding Deleted, Mode=OneWay}" />
               </StackLayout>

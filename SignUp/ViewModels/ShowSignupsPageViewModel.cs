@@ -22,13 +22,13 @@ namespace SignUp.ViewModels
 		/// <summary>
 		/// The items.
 		/// </summary>
-		ObservableCollection<GroupItem> items = new ObservableCollection<GroupItem>();
+		ObservableCollection<SignupItem> items = new ObservableCollection<SignupItem>();
 
         /// <summary>
         /// Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-		public ObservableCollection<GroupItem> Items
+        public ObservableCollection<SignupItem> Items
 		{
 			get { return items; }
 			set { SetProperty(ref items, value, "Items"); }
@@ -75,7 +75,7 @@ namespace SignUp.ViewModels
 
 			try
 			{
-                var table = App.CloudService.GetTable<GroupItem>();
+                var table = App.CloudService.GetTable<SignupItem>();
                 var list = await table.ReadAllItemsAsync();
 
                 Items.Clear();
@@ -85,6 +85,48 @@ namespace SignUp.ViewModels
 			catch (Exception ex)
 			{
 				Debug.WriteLine($"[TaskList] Error loading items: {ex.Message}");
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+		}
+
+		Command btnCommand;
+
+		public Command AddNewItemCommand => btnCommand ?? (btnCommand = new Command(async () => ExecuteAddNewItemCommand()));
+
+        /// <summary>
+        /// Executes the add new item command.
+        /// </summary>
+        /// <returns>The add new item command.</returns>
+		async Task ExecuteAddNewItemCommand()
+		{
+			if (IsBusy) return;
+
+			IsBusy = true;
+
+			try
+			{
+                SignupItem newSignup = new SignupItem();
+                newSignup.GroupCode = this.groupCode;
+                newSignup.UserID = this.facebookID;
+                newSignup.Name = this.facebookName;
+                newSignup.Email = this.facebookEmail;
+                newSignup.EventDate = DateTime.Now;
+
+				var table = App.CloudService.GetTable<SignupItem>();
+                await table.CreateItemAsync(newSignup);
+
+				var list = await table.ReadAllItemsAsync();
+
+				Items.Clear();
+				foreach (var item in list)
+					Items.Add(item);
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"[GroupCheck] Error = {ex.Message}");
 			}
 			finally
 			{

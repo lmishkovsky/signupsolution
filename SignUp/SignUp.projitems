@@ -47,6 +47,7 @@
       <DependentUpon>ShowSignupsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShowSignupsPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SignupItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />

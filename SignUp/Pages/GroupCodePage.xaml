@@ -11,7 +11,7 @@
             <ActivityIndicator
                            IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
-                           Color="Black" />
+                           Color="Blue" />
             <Label Text="What is your group code?" VerticalOptions="Center"/>
             <Entry Text="{Binding GroupCode, Mode=TwoWay}"></Entry>
             <Button BackgroundColor="Teal"
