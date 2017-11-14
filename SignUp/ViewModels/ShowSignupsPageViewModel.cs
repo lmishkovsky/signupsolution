@@ -63,10 +63,13 @@ namespace SignUp.ViewModels
 			//});
 		}
 
-        /// <summary>
-        /// Executes the refresh command.
-        /// </summary>
-        /// <returns>The refresh command.</returns>
+		Command refreshCmd;
+		public Command RefreshCommand => refreshCmd ?? (refreshCmd = new Command(async () => await ExecuteRefreshCommand()));
+
+		/// <summary>
+		/// Executes the refresh command.
+		/// </summary>
+		/// <returns>The refresh command.</returns>
 		async Task ExecuteRefreshCommand()
 		{
 			if (IsBusy)
