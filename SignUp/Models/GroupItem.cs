@@ -9,5 +9,7 @@ namespace SignUp.Models
     public class GroupItem : RowData
     {
         public string GroupCode { get; set; }
+
+        public string Schedule { get; set; }
     }
 }

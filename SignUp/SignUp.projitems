@@ -48,6 +48,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShowSignupsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SignupItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Entry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Schedule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
@@ -57,5 +60,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
   </ItemGroup>
 </Project>

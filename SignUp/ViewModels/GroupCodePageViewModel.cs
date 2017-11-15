@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Plugin.Settings;
+using Signup.Helpers;
 using SignUp.Abstractions;
 using SignUp.Models;
 using Xamarin.Forms;
@@ -49,6 +52,40 @@ namespace SignUp.ViewModels
                     // if group code found
                     if (list != null && list.Count > 0)
                     {
+						// <Schedule><Entries><Entry><Start>2017-11-15T12:04:03.850294Z</Start><Repeat>Weekly</Repeat></Entry><Entry><Start>2017-11-16T12:04:05.947764Z</Start><Repeat>Custom</Repeat></Entry></Entries></Schedule>
+						string scheduleAsString = list[0].Schedule;
+
+                        XmlSerializer xmlSerializer = new XmlSerializer(typeof(Schedule));
+
+						using (TextReader reader = new StringReader(scheduleAsString))
+						{
+                            Schedule schedule = (Schedule)xmlSerializer.Deserialize(reader);
+						}
+
+                        #region [Sample XML serialization]
+
+                        //                  Schedule schedule = new Schedule();
+
+                        //                  Signup.Helpers.Entry entry1 = new Signup.Helpers.Entry();
+                        //                  entry1.Start = DateTime.UtcNow;
+                        //                  entry1.Repeat = Helpers.RepeatEnum.Weekly;
+                        //                  schedule.Entries.Add(entry1);
+
+                        //                  Signup.Helpers.Entry entry2 = new Signup.Helpers.Entry();
+                        //                  entry2.Start = DateTime.Now.AddDays(1).ToUniversalTime();
+                        //                  entry2.Repeat = Helpers.RepeatEnum.Custom;
+                        //                  schedule.Entries.Add((entry2));
+
+                        //                  XmlSerializer xmlSerializer = new XmlSerializer(typeof(Schedule));
+
+                        //using (StringWriter textWriter = new StringWriter())
+                        //{
+                        //                      xmlSerializer.Serialize(textWriter, schedule);
+                        //	string xmlString = textWriter.ToString();
+                        //}
+
+#endregion
+
                         // save group code in user settings (so that user does not have to enter it every time)
                         CrossSettings.Current.AddOrUpdateValue(Constants.CrossSettingsKeys.GroupCode, GroupCode);
 

@@ -13,5 +13,7 @@ namespace brightsoftsignupService.DataObjects
         /// </summary>
         /// <value>The group code.</value>
         public string GroupCode { get; set; }
+
+        public string Schedule { get; set; }
     }
 }
