@@ -10,7 +10,7 @@ namespace brightsoftsignupService.DataObjects
     {
 		public string GroupCode { get; set; }
 
-        public DateTimeOffset EventDate { get; set; }
+        public DateTime EventDate { get; set; }
 
 		public string UserID { get; set; }
 

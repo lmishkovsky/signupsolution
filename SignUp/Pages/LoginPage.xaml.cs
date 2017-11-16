@@ -8,7 +8,9 @@ namespace SignUp.Pages
         {
             InitializeComponent();
 
-            // called from iOS once logged in Facebook
+			Title = "Log in";
+
+			// called from iOS once logged in Facebook
 			App.PostSuccessFacebookAction = token =>
 			{
                 string message = string.Format("You are now logged in as: {0}", token);

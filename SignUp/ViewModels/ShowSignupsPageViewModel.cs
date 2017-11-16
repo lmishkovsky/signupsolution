@@ -37,9 +37,9 @@ namespace SignUp.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SignUp.ViewModels.ShowSignupsPageViewModel"/> class.
         /// </summary>
-        public ShowSignupsPageViewModel()
+        public ShowSignupsPageViewModel(DateTime dtNextEventDate)
         {
-            Title = "Signups";
+            Title = string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd/MMM/yyyy, H:mm"));
 
             this.facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
             this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
