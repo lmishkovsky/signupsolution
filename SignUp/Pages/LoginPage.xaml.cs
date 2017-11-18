@@ -1,24 +1,21 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.Settings;
+using Xamarin.Forms;
 
 namespace SignUp.Pages
 {
+    /// <summary>
+    /// Login page.
+    /// </summary>
     public partial class LoginPage : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:SignUp.Pages.LoginPage"/> class.
+        /// </summary>
         public LoginPage()
         {
             InitializeComponent();
 
 			Title = "Log in";
-
-			// called from iOS once logged in Facebook
-			App.PostSuccessFacebookAction = token =>
-			{
-                string message = string.Format("You are now logged in as: {0}", token);
-
-                lblResult.Text =  message;
-
-                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
-			};
-        }
+		}
     }
 }

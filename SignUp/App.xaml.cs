@@ -1,8 +1,12 @@
-﻿using SignUp.Abstractions;
+﻿using Plugin.Settings;
+using SignUp.Abstractions;
 using SignUp.Pages;
 using SignUp.Services;
-using Xamarin.Facebook;
 using Xamarin.Forms;
+
+#if __ANDROID__
+using Xamarin.Facebook;
+#endif
 
 namespace SignUp
 {
@@ -32,19 +36,17 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-			// AccessToken.CurrentAccessToken is set by the login process for Android
-			// PostSuccessFacebookAction is set by the login process for iOS
-			if (AccessToken.CurrentAccessToken != null || PostSuccessFacebookAction != null)
+            string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+
+            if (string.IsNullOrEmpty(facebookID))
             {
-                // go directly to the group code page if used is already logged in
-                MainPage = new NavigationPage(new GroupCodePage());
+                MainPage = new NavigationPage(new LoginPage());
             }
             else 
             {
-                // stay on the login page if user is not logged in
-                MainPage = new NavigationPage(new LoginPage());
+                MainPage = new NavigationPage(new GroupCodePage());
             }
-        }
+		}
 
         /// <summary>
         /// Ons the start.

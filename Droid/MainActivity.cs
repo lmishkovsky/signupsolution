@@ -66,8 +66,7 @@ namespace SignUp.Droid
 					//token["access_token"] = facebookToken;
 					//var user = await Client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 
-                    // Call the Facebook Graph API to obtains the user's name and email (if available) 
-
+                    // navigate to the 2nd (Group Code) page if logged in
                     Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
 				},
 				HandleCancel = () =>

@@ -161,6 +161,7 @@
     <Compile Include="DataObjects\SignupItem.cs" />
     <Compile Include="Extensions\GroupItemExtensions.cs" />
     <Compile Include="Controllers\SignupItemController.cs" />
+    <Compile Include="Extensions\SignupExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

@@ -95,8 +95,10 @@ namespace SignUp.ViewModels
                         // save group code in user settings (so that user does not have to enter it every time)
                         CrossSettings.Current.AddOrUpdateValue(Constants.CrossSettingsKeys.GroupCode, GroupCode);
 
+                        Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.ShowSignupsPage(dtNextEventDate));
+
                         // navigate to next page
-                        Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage(dtNextEventDate));
+                        // Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage(dtNextEventDate));
                     }
                     else {
                         //await DisplayAlert("Alert", "You have been alerted", "OK");
