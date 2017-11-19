@@ -110,7 +110,7 @@ namespace SignUp.ViewModels
             {
                 item.Index = string.Format("{0}. ", (list.IndexOf(item) + 1).ToString());
 
-                item.UpdatedAtAsString = string.Format("{0:ddd hh:mm}", item.UpdatedAt); // item.UpdatedAt.ToString();
+                item.UpdatedAtAsString = string.Format("{0:ddd, dd MMM, hh:mm}", item.UpdatedAt); // item.UpdatedAt.ToString();
 
                 Items.Add(item);
             }
