@@ -5,7 +5,7 @@
     x:Class="SignUp.Pages.ShowSignupsPage"
     Title="{Binding Title}"
 >
-	<ContentPage.Content>
+    <ContentPage.Content>
         <StackLayout>
       <ListView BackgroundColor="#7F7F7F"
                 CachingStrategy="RecycleElement"
@@ -25,7 +25,7 @@
                 <Label HorizontalOptions="Start"
                        Text="{Binding Index}"
                        TextColor="#272832" />
-                <Label HorizontalOptions="FillAndExpand"
+                <Label HorizontalOptions="StartAndExpand"
                        Text="{Binding Name}"
                        TextColor="#272832" />
                 <Label HorizontalOptions="End"
@@ -48,5 +48,5 @@
                 />
       </StackLayout>
     </StackLayout>
-	</ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>
