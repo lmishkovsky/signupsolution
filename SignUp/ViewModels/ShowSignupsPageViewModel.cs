@@ -15,6 +15,20 @@ namespace SignUp.ViewModels
     /// </summary>
     public class ShowSignupsPageViewModel : BaseViewModel
     {
+        private const string ADDME = "Add me!";
+        private const string REMOVEME = "Remove me!";
+
+        string buttonText;
+        public string ButtonText 
+        {
+            get { return buttonText; }
+			set
+			{
+                buttonText = value;
+				OnPropertyChanged("ButtonText");
+			}
+        }
+
 		string facebookID = string.Empty;
 		string facebookName = string.Empty;
 		string facebookEmail = string.Empty;
@@ -49,6 +63,8 @@ namespace SignUp.ViewModels
             this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
             this.facebookEmail = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookEmail, string.Empty);
             this.groupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
+
+            this.ButtonText = ADDME;
 
             RefreshList();
         }
@@ -110,7 +126,12 @@ namespace SignUp.ViewModels
             {
                 item.Index = string.Format("{0}. ", (list.IndexOf(item) + 1).ToString());
 
-                item.UpdatedAtAsString = string.Format("{0:dd MMM, hh:mm}", item.UpdatedAt); // item.UpdatedAt.ToString();
+                item.UpdatedAtAsString = string.Format("{0:dd MMM, HH:mm}", item.UpdatedAt);
+
+                if (item.UserID.Equals(this.facebookID))
+                {
+                    this.ButtonText = REMOVEME;
+                }
 
                 Items.Add(item);
             }
@@ -136,32 +157,47 @@ namespace SignUp.ViewModels
 
 				// query for this event and user
 				var list = await table.GetTheMobileServiceTable().
-                                      Where(signupItem => signupItem.GroupCode == this.groupCode 
-                                            && signupItem.EventDate == this.dtNextEventDate.ToLocalTime()
-                                            && signupItem.UserID == this.facebookID
-                                           ).ToListAsync();
+									  Where(signupItem => signupItem.GroupCode == this.groupCode
+											&& signupItem.EventDate == this.dtNextEventDate.ToLocalTime()
+											&& signupItem.UserID == this.facebookID
+										   ).ToListAsync();
 
-                if (list != null && list.Count > 0)
+                if (ButtonText.Equals(REMOVEME))
                 {
-                    // show message user is already in the list
-                    await Application.Current.MainPage.DisplayAlert("Alert", "You are already in the list.", "OK");
+                    var itemToRemove = list[0];
+
+                    // soft delete user    
+                    await table.DeleteItemAsync(itemToRemove);
+
+					// refresh list
+					await BindSignupsList();
+
+                    ButtonText = ADDME;
                 }
                 else
                 {
-                    // prepare the new entry 
-                    SignupItem newSignup = new SignupItem();
-                    newSignup.GroupCode = this.groupCode;
-                    newSignup.UserID = this.facebookID;
-                    newSignup.Name = this.facebookName;
-                    newSignup.Email = this.facebookEmail;
-                    newSignup.EventDate = this.dtNextEventDate;
+                    if (list != null && list.Count > 0)
+                    {
+                        // show message user is already in the list
+                        await Application.Current.MainPage.DisplayAlert("Alert", "You are already in the list.", "OK");
+                    }
+                    else
+                    {
+                        // prepare the new entry 
+                        SignupItem newSignup = new SignupItem();
+                        newSignup.GroupCode = this.groupCode;
+                        newSignup.UserID = this.facebookID;
+                        newSignup.Name = this.facebookName;
+                        newSignup.Email = this.facebookEmail;
+                        newSignup.EventDate = this.dtNextEventDate;
 
-                    // add the new signup
-                    await table.CreateItemAsync(newSignup);
+                        // add the new signup
+                        await table.CreateItemAsync(newSignup);
+
+                        // refresh list
+                        await BindSignupsList();
+                    }
                 }
-
-                // refresh list
-                await BindSignupsList();
 			}
 			catch (Exception ex)
 			{
