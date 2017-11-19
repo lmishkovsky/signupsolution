@@ -22,11 +22,14 @@
                            Orientation="Horizontal"
                            Padding="10"
                            VerticalOptions="CenterAndExpand">
+                <Label HorizontalOptions="Start"
+                       Text="{Binding Index}"
+                       TextColor="#272832" />
                 <Label HorizontalOptions="FillAndExpand"
                        Text="{Binding Name}"
                        TextColor="#272832" />
                 <Label HorizontalOptions="End"
-                       Text="{Binding CreatedAt}"
+                       Text="{Binding UpdatedAtAsString}"
                        TextColor="#272832" />
 <!--                <Switch IsToggled="{Binding Deleted, Mode=OneWay}" />-->
               </StackLayout>

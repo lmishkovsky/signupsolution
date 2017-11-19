@@ -100,11 +100,18 @@ namespace SignUp.ViewModels
             var table = App.CloudService.GetTable<SignupItem>();
 
             // query for this event
-            var list = await table.GetTheMobileServiceTable().Where(signupItem => signupItem.GroupCode == this.groupCode && signupItem.EventDate == this.dtNextEventDate.ToLocalTime()).ToListAsync();
+            var list = await table.GetTheMobileServiceTable()
+                                  .Where(signupItem => signupItem.GroupCode == this.groupCode && signupItem.EventDate == this.dtNextEventDate.ToLocalTime())
+                                  .OrderBy(signupItem => signupItem.UpdatedAt)
+                                  .ToListAsync();
 
             Items.Clear();
             foreach (var item in list)
             {
+                item.Index = string.Format("{0}. ", (list.IndexOf(item) + 1).ToString());
+
+                item.UpdatedAtAsString = string.Format("{0:ddd hh:mm}", item.UpdatedAt); // item.UpdatedAt.ToString();
+
                 Items.Add(item);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using SignUp.Abstractions;
 
 namespace SignUp.Models
@@ -17,5 +18,13 @@ namespace SignUp.Models
         public string Name { get; set; }
 
         public string Email { get; set; }
+
+        // properties below are used strictly for display purposes
+
+        [JsonIgnore]
+        public string UpdatedAtAsString { get; set; }
+
+        [JsonIgnore]
+        public string Index { get; set; }
     }
 }
