@@ -25,6 +25,9 @@
                 <Label HorizontalOptions="FillAndExpand"
                        Text="{Binding Name}"
                        TextColor="#272832" />
+                <Label HorizontalOptions="End"
+                       Text="{Binding CreatedAt}"
+                       TextColor="#272832" />
 <!--                <Switch IsToggled="{Binding Deleted, Mode=OneWay}" />-->
               </StackLayout>
             </ViewCell>
@@ -36,7 +39,10 @@
         <Button BackgroundColor="Teal"
                 Command="{Binding AddNewItemCommand}"
                 Text="Add me!"
-                TextColor="White" />
+                TextColor="White"
+                WidthRequest="80"
+                Margin="0, 15, 0, 20"
+                />
       </StackLayout>
     </StackLayout>
 	</ContentPage.Content>
