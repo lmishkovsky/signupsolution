@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
 using brightsoftsignupService.DataObjects;
+using brightsoftsignupService.Extensions;
 using brightsoftsignupService.Models;
 using Microsoft.Azure.Mobile.Server;
 
@@ -37,6 +38,17 @@ namespace brightsoftsignupService.Controllers
 		public SingleResult<SignupItem> GetSignupItem(string id)
 		{
 			return Lookup(id);
+		}
+
+		/// <summary>
+        /// Gets all signup item.
+        /// </summary>
+        /// <returns>The all signup item.</returns>
+        /// <param name="groupCode">Group code.</param>
+        public IQueryable<SignupItem> GetAllSignupItem(string groupCode, DateTime dtEventDate)
+		{
+			// filter applied through an extension method
+            return Query().PerEventFilter(groupCode, dtEventDate);
 		}
 
 		// PATCH tables/SignupItem/48D68C86-6EA6-4C25-AA33-223FC9A27959

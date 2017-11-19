@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using Plugin.Settings;
 using SignUp.Abstractions;
@@ -18,6 +19,7 @@ namespace SignUp.ViewModels
 		string facebookName = string.Empty;
 		string facebookEmail = string.Empty;
         string groupCode = string.Empty;
+        DateTime dtNextEventDate;
 
 		/// <summary>
 		/// The items.
@@ -39,6 +41,8 @@ namespace SignUp.ViewModels
         /// </summary>
         public ShowSignupsPageViewModel(DateTime dtNextEventDate)
         {
+            this.dtNextEventDate = dtNextEventDate;
+
             Title = string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd MMM yyyy, H:mm"));
 
             this.facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
@@ -62,42 +66,52 @@ namespace SignUp.ViewModels
 			//	await ExecuteRefreshCommand();
 			//});
 		}
+ 
+        Command refreshCmd;
+        public Command RefreshCommand => refreshCmd ?? (refreshCmd = new Command(async () => await ExecuteRefreshCommand()));
 
-		Command refreshCmd;
-		public Command RefreshCommand => refreshCmd ?? (refreshCmd = new Command(async () => await ExecuteRefreshCommand()));
+        /// <summary>
+        /// Executes the refresh command.
+        /// </summary>
+        /// <returns>The refresh command.</returns>
+        async Task ExecuteRefreshCommand()
+        {
+            Contract.Ensures(Contract.Result<Task>() != null);
+            if (IsBusy)
+                return;
+            IsBusy = true;
 
-		/// <summary>
-		/// Executes the refresh command.
-		/// </summary>
-		/// <returns>The refresh command.</returns>
-		async Task ExecuteRefreshCommand()
-		{
-			if (IsBusy)
-				return;
-			IsBusy = true;
+            try
+            {
+                await BindSignupsList();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[TaskList] Error loading items: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
 
-			try
-			{
-                var table = App.CloudService.GetTable<SignupItem>();
-                var list = await table.ReadAllItemsAsync();
+        async Task BindSignupsList()
+        {
+            var table = App.CloudService.GetTable<SignupItem>();
 
-                Items.Clear();
-				foreach (var item in list)
-					Items.Add(item);
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine($"[TaskList] Error loading items: {ex.Message}");
-			}
-			finally
-			{
-				IsBusy = false;
-			}
-		}
+            // query for this event
+            var list = await table.GetTheMobileServiceTable().Where(signupItem => signupItem.GroupCode == this.groupCode && signupItem.EventDate == this.dtNextEventDate.ToLocalTime()).ToListAsync();
 
-		Command btnCommand;
+            Items.Clear();
+            foreach (var item in list)
+            {
+                Items.Add(item);
+            }
+        }
 
-		public Command AddNewItemCommand => btnCommand ?? (btnCommand = new Command(async () => ExecuteAddNewItemCommand()));
+        Command btnCommand;
+
+        public Command AddNewItemCommand => btnCommand ?? (btnCommand = new Command(async () => ExecuteAddNewItemCommand()));
 
         /// <summary>
         /// Executes the add new item command.
@@ -116,16 +130,12 @@ namespace SignUp.ViewModels
                 newSignup.UserID = this.facebookID;
                 newSignup.Name = this.facebookName;
                 newSignup.Email = this.facebookEmail;
-                newSignup.EventDate = DateTime.Now;
+                newSignup.EventDate = this.dtNextEventDate;
 
 				var table = App.CloudService.GetTable<SignupItem>();
                 await table.CreateItemAsync(newSignup);
 
-				var list = await table.ReadAllItemsAsync();
-
-				Items.Clear();
-				foreach (var item in list)
-					Items.Add(item);
+                await BindSignupsList();
 			}
 			catch (Exception ex)
 			{
