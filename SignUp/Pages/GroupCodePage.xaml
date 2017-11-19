@@ -13,7 +13,7 @@
                            IsRunning="{Binding IsBusy}"
                            Color="Blue" />
             <Label Text="What is your group code?" VerticalOptions="Center"/>
-            <Entry Text="{Binding GroupCode, Mode=TwoWay}"></Entry>
+            <Entry Text="{Binding GroupCode, Mode=TwoWay}" HeightRequest="40"></Entry>
             <Button BackgroundColor="Teal"
                     BorderRadius="10"
                     Command="{Binding GroupCheckCommand}"

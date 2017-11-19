@@ -125,16 +125,35 @@ namespace SignUp.ViewModels
 
 			try
 			{
-                SignupItem newSignup = new SignupItem();
-                newSignup.GroupCode = this.groupCode;
-                newSignup.UserID = this.facebookID;
-                newSignup.Name = this.facebookName;
-                newSignup.Email = this.facebookEmail;
-                newSignup.EventDate = this.dtNextEventDate;
-
 				var table = App.CloudService.GetTable<SignupItem>();
-                await table.CreateItemAsync(newSignup);
 
+				// query for this event and user
+				var list = await table.GetTheMobileServiceTable().
+                                      Where(signupItem => signupItem.GroupCode == this.groupCode 
+                                            && signupItem.EventDate == this.dtNextEventDate.ToLocalTime()
+                                            && signupItem.UserID == this.facebookID
+                                           ).ToListAsync();
+
+                if (list != null && list.Count > 0)
+                {
+                    // show message user is already in the list
+                    await Application.Current.MainPage.DisplayAlert("Alert", "You are already in the list.", "OK");
+                }
+                else
+                {
+                    // prepare the new entry 
+                    SignupItem newSignup = new SignupItem();
+                    newSignup.GroupCode = this.groupCode;
+                    newSignup.UserID = this.facebookID;
+                    newSignup.Name = this.facebookName;
+                    newSignup.Email = this.facebookEmail;
+                    newSignup.EventDate = this.dtNextEventDate;
+
+                    // add the new signup
+                    await table.CreateItemAsync(newSignup);
+                }
+
+                // refresh list
                 await BindSignupsList();
 			}
 			catch (Exception ex)

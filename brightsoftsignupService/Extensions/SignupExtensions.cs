@@ -13,5 +13,10 @@ namespace brightsoftsignupService.Extensions
 		{
             return query.Where(item => item.GroupCode.Equals(groupCode) && item.EventDate.Equals((dtEventDate)));
 		}
+
+		public static IQueryable<SignupItem> PerEventAndUserFilter(this IQueryable<SignupItem> query, string groupCode, DateTime dtEventDate, string userID)
+		{
+            return query.Where(item => item.GroupCode.Equals(groupCode) && item.EventDate.Equals(dtEventDate) && item.UserID.Equals(userID));
+		}
     }
 }

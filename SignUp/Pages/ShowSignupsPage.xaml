@@ -25,7 +25,7 @@
                 <Label HorizontalOptions="FillAndExpand"
                        Text="{Binding Name}"
                        TextColor="#272832" />
-                <Switch IsToggled="{Binding Deleted, Mode=OneWay}" />
+<!--                <Switch IsToggled="{Binding Deleted, Mode=OneWay}" />-->
               </StackLayout>
             </ViewCell>
           </DataTemplate>
