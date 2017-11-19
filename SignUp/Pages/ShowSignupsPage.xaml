@@ -35,7 +35,7 @@
                    Orientation="Horizontal">
         <Button BackgroundColor="Teal"
                 Command="{Binding AddNewItemCommand}"
-                Text="Add New Item"
+                Text="Add me!"
                 TextColor="White" />
       </StackLayout>
     </StackLayout>
