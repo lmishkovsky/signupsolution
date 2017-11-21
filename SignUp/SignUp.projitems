@@ -51,6 +51,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Entry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Schedule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FacebookHelper\FacebookService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginDependencyPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />
@@ -61,5 +63,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FacebookHelper\" />
   </ItemGroup>
 </Project>

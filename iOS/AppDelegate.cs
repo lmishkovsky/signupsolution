@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
 namespace SignUp.iOS
@@ -11,15 +7,15 @@ namespace SignUp.iOS
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         /// <summary>
-        /// Finisheds the launching.
+        /// Finished the launching.
         /// </summary>
         /// <returns><c>true</c>, if launching was finisheded, <c>false</c> otherwise.</returns>
-        /// <param name="app">App.</param>
-        /// <param name="options">Options.</param>
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        /// <param name="uiApplication">User interface application.</param>
+        /// <param name="launchOptions">Launch options.</param>
+        public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
-			Facebook.CoreKit.Settings.AppID = "351149828643713";
-			Facebook.CoreKit.Settings.DisplayName = "SignUp";
+            Facebook.CoreKit.Settings.AppID = "351149828643713";
+            Facebook.CoreKit.Settings.DisplayName = "SignUp";
 
             global::Xamarin.Forms.Forms.Init();
 
@@ -27,8 +23,9 @@ namespace SignUp.iOS
 
             LoadApplication(new App());
 
-			Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
-			return base.FinishedLaunching(app, options);
+            Facebook.CoreKit.Profile.EnableUpdatesOnAccessTokenChange(true);
+            Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(uiApplication, launchOptions);
+            return base.FinishedLaunching(uiApplication, launchOptions);
         }
 
         /// <summary>
@@ -41,7 +38,7 @@ namespace SignUp.iOS
         /// <param name="annotation">Annotation.</param>
 		public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
 		{
-			return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+            return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
 		}
 
         /// <summary>

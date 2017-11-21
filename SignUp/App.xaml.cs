@@ -16,12 +16,6 @@ namespace SignUp
     public partial class App : Application
     {
         /// <summary>
-        /// Gets or sets the post success facebook action - USED FROM iOS and not Android client app.
-        /// </summary>
-        /// <value>The post success facebook action.</value>
-        public static System.Action<string> PostSuccessFacebookAction { get; set; }
-
-        /// <summary>
         /// Needed to access Azure services
         /// </summary>
         /// <value>The cloud service.</value>
@@ -36,16 +30,7 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-            string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
-
-            if (string.IsNullOrEmpty(facebookID))
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else 
-            {
-                MainPage = new NavigationPage(new GroupCodePage());
-            }
+            MainPage = new NavigationPage(new LoginDependencyPage());
 		}
 
         /// <summary>
