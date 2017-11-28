@@ -36,6 +36,7 @@ namespace SignUp
             public static string FacebookID = "facebookID";
             public static string FacebookName = "facebookName";
             public static string FacebookEmail = "facebookEmail";
+            public static string FacebookImage = "facebookImage";
 
             public static string GroupCode = "groupCode";
         }

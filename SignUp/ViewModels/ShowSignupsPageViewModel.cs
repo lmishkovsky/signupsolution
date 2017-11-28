@@ -15,8 +15,8 @@ namespace SignUp.ViewModels
     /// </summary>
     public class ShowSignupsPageViewModel : BaseViewModel
     {
-        private const string ADDME = "Add me!";
-        private const string REMOVEME = "Remove me!";
+        private const string ADDME = "Add me";
+        private const string REMOVEME = "Remove me";
 
         string buttonText;
         public string ButtonText 
@@ -57,7 +57,7 @@ namespace SignUp.ViewModels
         {
             this.dtNextEventDate = dtNextEventDate;
 
-            Title = string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd MMM yyyy, H:mm"));
+            Title = string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd MMM, H:mm"));
 
             this.facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
             this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
@@ -139,7 +139,7 @@ namespace SignUp.ViewModels
 
         Command btnCommand;
 
-        public Command AddNewItemCommand => btnCommand ?? (btnCommand = new Command(async () => ExecuteAddNewItemCommand()));
+        public Command AddNewItemCommand => btnCommand ?? (btnCommand = new Command(async () => await ExecuteAddNewItemCommand()));
 
         /// <summary>
         /// Executes the add new item command.
@@ -202,6 +202,36 @@ namespace SignUp.ViewModels
 			catch (Exception ex)
 			{
 				Debug.WriteLine($"[GroupCheck] Error = {ex.Message}");
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+		}
+
+		Command goToNextPageCmd;
+		public Command RedirectCommand => goToNextPageCmd ?? (goToNextPageCmd = new Command(async () => await ExecuteNavigationCommand()));
+
+		/// <summary>
+		/// Executes the navigation command.
+		/// </summary>
+		/// <returns>The navigation command.</returns>
+		async Task ExecuteNavigationCommand()
+		{
+			if (IsBusy)
+			{
+				return;
+			}
+
+			IsBusy = true;
+
+			try
+			{
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.ForumPage(dtNextEventDate));
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine($"[TaskList] Error loading items: {ex.Message}");
 			}
 			finally
 			{

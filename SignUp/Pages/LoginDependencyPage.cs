@@ -15,8 +15,10 @@ namespace SignUp.Pages
     {
         const string TITLE = "Signup Login";
         const string TELLUSWHOYOUARE = "Tell us who you are.";
+        const string NEXT = "NEXT";
 
         Image _imageProfile;
+        Button _btnNext;
 
 		readonly Label _hintLabel;
 		readonly List<Button> _loginButtons = new List<Button>();
@@ -27,10 +29,21 @@ namespace SignUp.Pages
         /// </summary>
 		public LoginDependencyPage()
 		{
+            // the page title
             Title = TITLE;
 
+            // the facebook image
             _imageProfile = new Image();
 
+            // the next button which brings us to the next page
+            _btnNext = new Button();
+            _btnNext.Text = NEXT;
+            _btnNext.BackgroundColor = Color.Teal;
+            _btnNext.TextColor = Color.White;
+            _btnNext.WidthRequest = 120;
+            _btnNext.Margin = new Thickness(120, 40, 120, 0);
+            _btnNext.IsVisible = false;
+            _btnNext.Clicked += NextButtonClicked;
 
 			_hintLabel = new Label
 			{
@@ -63,8 +76,46 @@ namespace SignUp.Pages
 				stackLayout.Children.Add(loginButton);
 			}
 
+            stackLayout.Children.Add(_btnNext);
+
 			Content = stackLayout;
+
+            // GoToGroupPageIfAlreadyLoggedIn();
 		}
+
+        /// <summary>
+        /// Gos to group page if not first login.
+        /// </summary>
+        private void GoToGroupPageIfAlreadyLoggedIn()
+        {
+            var imageUrl = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookImage, string.Empty);
+
+            if (!String.IsNullOrEmpty(imageUrl))
+            {
+                var userName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
+
+                _hintLabel.Text = $"Hi {userName}!";
+				_loginButtons[0].Text = $"Logout Facebook";
+                _imageProfile.Source = imageUrl;
+				_imageProfile.WidthRequest = 200;
+				_imageProfile.HeightRequest = 200;
+
+                _isAuthenticated = true;
+                _btnNext.IsVisible = true;
+
+                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
+            }
+        }
+
+        /// <summary>
+        /// Next button clicked.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
+        async void NextButtonClicked(object sender, EventArgs e)
+        {
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
+        }
 
         /// <summary>
         /// Logins the button on clicked.
@@ -86,6 +137,10 @@ namespace SignUp.Pages
                     CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookID, string.Empty);
                     CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookName, string.Empty);
                     CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookEmail, string.Empty);
+                    CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookImage, string.Empty);
+
+                    // hide next button
+                    _btnNext.IsVisible = false;
 
                     var senderBtn = sender as Button;
                     if (senderBtn == null) return;
@@ -128,6 +183,9 @@ namespace SignUp.Pages
                             CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookID, loginResult.UserId);
                             CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookName, loginResult.FirstName + " " + loginResult.LastName);
                             CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookEmail, loginResult.Email);
+                            CrossSettings.Current.AddOrUpdateValue(SignUp.Constants.CrossSettingsKeys.FacebookImage, loginResult.ImageUrl);
+
+                            _btnNext.IsVisible = true;
 
                             _isAuthenticated = true;
 

@@ -22,6 +22,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ShowSignupsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ForumPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -53,6 +56,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FacebookHelper\FacebookService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginDependencyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ForumPage.xaml.cs">
+      <DependentUpon>ForumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ForumPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />

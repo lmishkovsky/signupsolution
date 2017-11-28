@@ -46,6 +46,13 @@
                 WidthRequest="120"
                 Margin="0, 15, 0, 20"
                 />
+                <Button BackgroundColor="Teal"
+                Command="{Binding RedirectCommand}"
+                Text="Messages"
+                TextColor="White"
+                WidthRequest="120"
+                Margin="0, 15, 0, 20"
+                />
       </StackLayout>
     </StackLayout>
     </ContentPage.Content>
