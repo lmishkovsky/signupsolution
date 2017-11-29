@@ -60,6 +60,7 @@
       <DependentUpon>ForumPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ForumPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ForumItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CustomControls\" />

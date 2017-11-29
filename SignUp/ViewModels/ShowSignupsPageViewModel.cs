@@ -76,11 +76,6 @@ namespace SignUp.ViewModels
 		async Task RefreshList()
 		{
 			await ExecuteRefreshCommand();
-
-			//MessagingCenter.Subscribe<TaskDetailViewModel>(this, "ItemsChanged", async (sender) =>
-			//{
-			//	await ExecuteRefreshCommand();
-			//});
 		}
  
         Command refreshCmd;

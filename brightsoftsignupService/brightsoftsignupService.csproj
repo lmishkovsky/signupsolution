@@ -162,6 +162,8 @@
     <Compile Include="Extensions\GroupItemExtensions.cs" />
     <Compile Include="Controllers\SignupItemController.cs" />
     <Compile Include="Extensions\SignupExtensions.cs" />
+    <Compile Include="Controllers\ForumItemController.cs" />
+    <Compile Include="DataObjects\ForumItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

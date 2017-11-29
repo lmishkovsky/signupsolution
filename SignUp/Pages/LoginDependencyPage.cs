@@ -189,7 +189,7 @@ namespace SignUp.Pages
 
                             _isAuthenticated = true;
 
-                            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
+                            //await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
 
                             break;
                         default:

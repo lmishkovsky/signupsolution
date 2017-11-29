@@ -30,7 +30,15 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-            MainPage = new NavigationPage(new LoginDependencyPage());
+            var facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+
+            if (string.IsNullOrEmpty(facebookID))
+            {
+                MainPage = new NavigationPage(new LoginDependencyPage());
+            }
+            else {
+                MainPage = new NavigationPage(new GroupCodePage());
+            }
 		}
 
         /// <summary>
