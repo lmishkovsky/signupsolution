@@ -20,7 +20,7 @@ namespace SignUp.ViewModels
         string groupCode = string.Empty;
         DateTime dtNextEventDate;
 
-		string message;
+        string message = "Type your message here.";
 		public string Message
 		{
             get { return message; }
@@ -93,6 +93,8 @@ namespace SignUp.ViewModels
 
                 // show new forum post on top
                 await BindForumList();
+
+                this.Message = string.Empty;
             }
             catch (Exception ex)
             {

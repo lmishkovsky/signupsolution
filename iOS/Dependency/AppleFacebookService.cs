@@ -20,6 +20,14 @@ namespace SignUp.iOS.Dependency
 		LoginResult _loginResult;
 		TaskCompletionSource<LoginResult> _completionSource;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:SignUp.iOS.Dependency.AppleFacebookService"/> class.
+        /// </summary>
+        public AppleFacebookService() 
+        {
+            
+        }
+
 		public Task<LoginResult> Login()
 		{
 			_completionSource = new TaskCompletionSource<LoginResult>();
