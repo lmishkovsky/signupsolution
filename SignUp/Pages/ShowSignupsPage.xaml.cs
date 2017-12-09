@@ -19,6 +19,8 @@ namespace SignUp.Pages
 		{
 			InitializeComponent();
 
+            Icon = "ic_group.png";
+
 			BindingContext = new ShowSignupsPageViewModel(dtNextEventDate);
 		}
     }

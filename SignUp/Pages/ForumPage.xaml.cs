@@ -11,7 +11,8 @@ namespace SignUp.Pages
         {
             InitializeComponent();
 
-			Title = string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd MMM, H:mm"));
+            Title = "Messages"; // string.Format("{0}", dtNextEventDate.ToLocalTime().ToString("dddd, dd MMM, H:mm"));
+            Icon = "ic_message.png";
 
             BindingContext = new ForumPageViewModel(dtNextEventDate);
         }

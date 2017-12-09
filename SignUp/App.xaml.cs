@@ -32,13 +32,15 @@ namespace SignUp
 
             var facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
 
-            if (string.IsNullOrEmpty(facebookID))
-            {
-                MainPage = new NavigationPage(new LoginDependencyPage());
-            }
-            else {
-                MainPage = new NavigationPage(new GroupCodePage());
-            }
+            MainPage = new NavigationPage(new RootPage());
+
+            //if (string.IsNullOrEmpty(facebookID))
+            //{
+            //    MainPage = new NavigationPage(new LoginDependencyPage());
+            //}
+            //else {
+            //    MainPage = new NavigationPage(new GroupCodePage());
+            //}
 		}
 
         /// <summary>

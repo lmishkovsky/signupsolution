@@ -14,6 +14,9 @@ namespace SignUp.Pages
         {
             InitializeComponent();
 
+            Title = "Groups";
+            Icon = "ic_event";
+
             // make the connection between the page and the view model
             BindingContext = new GroupCodePageViewModel();
         }
