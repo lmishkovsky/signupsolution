@@ -157,6 +157,9 @@
     <Reference Include="Xamarin.Facebook">
       <HintPath>..\packages\Xamarin.Facebook.Android.4.26.0\lib\MonoAndroid70\Xamarin.Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="BottomNavigationBar">
+      <HintPath>..\packages\BottomNavigationBar.1.4.0.3\lib\MonoAndroid403\BottomNavigationBar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -166,6 +169,7 @@
     <Compile Include="FacebookHelper\FacebookCallback.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Dependency\AndroidFacebookService.cs" />
+    <Compile Include="CustomRenderers\MainPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
