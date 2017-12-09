@@ -11,7 +11,7 @@ namespace SignUp.Pages
         {
             InitializeComponent();
 
-            AccountPage accountPage = new AccountPage();
+            LoginDependencyPage accountPage = new LoginDependencyPage(); // new AccountPage();
             //GroupCodePage groupCodePage = new GroupCodePage();
             ShowSignupsPage showSignupsPage = new ShowSignupsPage(DateTime.Now);
             ForumPage forumPage = new ForumPage(DateTime.Now);

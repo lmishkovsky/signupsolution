@@ -13,7 +13,7 @@ namespace SignUp.Pages
     /// </summary>
     public class LoginDependencyPage : ContentPage
     {
-        const string TITLE = "Signup Login";
+        const string TITLE = "Account";
         const string TELLUSWHOYOUARE = "Tell us who you are.";
         const string NEXT = "NEXT";
 
