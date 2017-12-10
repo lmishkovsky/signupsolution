@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SignUp.Pages.ForumPage">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SignUp.Pages.ForumPage"
+    xmlns:custom="clr-namespace:SignUp.PCL.CustomControls;assembly=SignUp.PCL"
+    >
 	<ContentPage.Content>
-        <StackLayout HorizontalOptions="StartAndExpand" Margin="10, 0, 10, 0">
+        <StackLayout HorizontalOptions="StartAndExpand" Margin="20, 0, 20, 0">
               <ListView
                         SeparatorVisibility="Default"
                         HasUnevenRows="true"
@@ -15,13 +20,25 @@
                 <ListView.ItemTemplate>
                   <DataTemplate>
                     <ViewCell>
-                      <StackLayout Padding="10, 0, 10, 0" Orientation="Horizontal">
-                        <Image Source="{Binding ImageUrl}" HeightRequest="90" WidthRequest="90"></Image>  
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="14" />
-                                    <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="14" />
-                                    <Label Text="{Binding Message}" FontSize="12"></Label>
+                      <StackLayout Padding="0, 5, 0, 15" HorizontalOptions="Fill" Orientation="Horizontal">
+                                
+                                <custom:ImageCircle 
+                                        Source="{Binding ImageUrl}" 
+                                        HeightRequest="50" 
+                                        WidthRequest="50" 
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Start"
+                                >
+                                </custom:ImageCircle>
+                          
+                                <StackLayout Margin="10, 0, 0, 0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="16" />
+                                        <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="12" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                    <Label HorizontalOptions="StartAndExpand" Text="{Binding Message}" FontSize="14"></Label>
                                 </StackLayout>
+                                
                       </StackLayout>
                     </ViewCell>
                   </DataTemplate>
