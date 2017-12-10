@@ -32,6 +32,8 @@ namespace SignUp.Pages
             // the page title
             Title = TITLE;
 
+            Icon = "ic_account_box.png";
+
             // the facebook image
             _imageProfile = new Image();
 

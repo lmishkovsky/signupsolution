@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="Aqua" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SignUp.Pages.MessagesPage">
+	<ContentPage.Content>
+        <StackLayout
+            Margin="20, 20, 20, 20"
+            BackgroundColor="Blue"
+        >
+            <ListView Margin="20, 20, 20, 20">
+                
+            </ListView>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

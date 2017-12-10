@@ -5,7 +5,7 @@
               <ListView
                         SeparatorVisibility="Default"
                         HasUnevenRows="true"
-                        BackgroundColor="#CCCCCC"
+                        BackgroundColor="White"
                         CachingStrategy="RecycleElement"
                         IsPullToRefreshEnabled="True"
                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
@@ -15,15 +15,13 @@
                 <ListView.ItemTemplate>
                   <DataTemplate>
                     <ViewCell>
-                      <StackLayout Padding="10, 0, 10, 0">
-                        <Label HorizontalOptions="End"
-                               Text="{Binding Name}"
-                               TextColor="#CC4422" />
-                        <Label HorizontalOptions="End"
-                               Text="{Binding UpdatedAtAsString}"
-                               TextColor="#CC4422" />
-                        <Label HorizontalOptions="Start"
-                                Text="{Binding Message}"></Label>
+                      <StackLayout Padding="10, 0, 10, 0" Orientation="Horizontal">
+                        <Image Source="{Binding ImageUrl}" HeightRequest="90" WidthRequest="90"></Image>  
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="14" />
+                                    <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="14" />
+                                    <Label Text="{Binding Message}" FontSize="12"></Label>
+                                </StackLayout>
                       </StackLayout>
                     </ViewCell>
                   </DataTemplate>

@@ -32,6 +32,8 @@ namespace SignUp
 
             var facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
 
+            // MainPage = new NavigationPage(new MessagesPage());
+
             MainPage = new NavigationPage(new RootPage());
 
             //if (string.IsNullOrEmpty(facebookID))
