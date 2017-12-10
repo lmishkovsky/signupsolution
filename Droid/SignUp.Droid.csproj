@@ -170,6 +170,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Dependency\AndroidFacebookService.cs" />
     <Compile Include="CustomRenderers\MainPageRenderer.cs" />
+    <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -211,6 +212,12 @@
     <Folder Include="CustomRenderers\" />
     <Folder Include="FacebookHelper\" />
     <Folder Include="Dependency\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SignUp.PCL\SignUp.PCL.csproj">
+      <Project>{C5433F6A-3C49-4595-8D93-45A019EE4957}</Project>
+      <Name>SignUp.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\SignUp\SignUp.projitems" Label="Shared" Condition="Exists('..\SignUp\SignUp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

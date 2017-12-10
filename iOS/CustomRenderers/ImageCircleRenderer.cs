@@ -25,7 +25,7 @@ namespace SignUp.iOS.CustomRenderers
                 double min = Math.Min(Element.Width, Element.Height);
                 Control.Layer.CornerRadius = (float)(min / 2.0);
                 Control.Layer.MasksToBounds = false;
-                Control.Layer.BorderColor = Color.FromHex("#CC4422").ToCGColor(); // OrangeRed.ToCGColor();
+                Control.Layer.BorderColor = Color.FromHex("#CC4422").ToCGColor(); // Color.White.ToCGColor();
                 Control.Layer.BorderWidth = 2; // 3;
                 Control.ClipsToBounds = true;
             }
@@ -54,7 +54,8 @@ namespace SignUp.iOS.CustomRenderers
             base.OnElementPropertyChanged(sender, e);
 
             if (e.PropertyName == VisualElement.HeightProperty.PropertyName ||
-                e.PropertyName == VisualElement.WidthProperty.PropertyName)
+                e.PropertyName == VisualElement.WidthProperty.PropertyName
+               )
             {
                 CreateCircle();
             }

@@ -28,6 +28,8 @@
                                         WidthRequest="50" 
                                         HorizontalOptions="Center"
                                         VerticalOptions="Start"
+                                        BorderColor="#CC4422"
+                                        BorderThickness="2"
                                 >
                                 </custom:ImageCircle>
                           

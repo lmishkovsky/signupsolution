@@ -12,7 +12,7 @@ namespace SignUp.Pages
             InitializeComponent();
 
             // remove the navigation bar at the top
-            NavigationPage.SetHasNavigationBar(this, false);
+            // NavigationPage.SetHasNavigationBar(this, false);
 
             LoginDependencyPage accountPage = new LoginDependencyPage(); // new AccountPage();
             GroupCodePage groupCodePage = new GroupCodePage();
