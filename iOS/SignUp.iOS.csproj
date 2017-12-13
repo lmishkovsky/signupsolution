@@ -160,6 +160,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Dependency\AppleFacebookService.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
+    <Compile Include="CustomRenderers\FloatingActionButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_account_box_2x.png" />

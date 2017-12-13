@@ -171,6 +171,7 @@
     <Compile Include="CustomRenderers\MainPageRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="Dependency\AndroidFacebookService.cs" />
+    <Compile Include="CustomRenderers\FloatingActionButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
