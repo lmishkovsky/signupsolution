@@ -24,5 +24,10 @@ namespace SignUp.Pages
 
             BindingContext = new ForumPageViewModel(dtNextEventDate);
         }
+
+        public async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.DisplayAlert("FAB Clicked!", "Congrats on creating your FAB!", "Thanks!");
+        }
     }
 }

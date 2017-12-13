@@ -46,14 +46,25 @@
                   </DataTemplate>
                 </ListView.ItemTemplate>
               </ListView>
-            <Editor  Margin="10, 0, 10, 0" BackgroundColor="#CCCC00" Text="{Binding Message}"></Editor>
+
+              <custom:FloatingActionButton 
+                    x:Name="FAB" 
+                    HorizontalOptions="CenterAndExpand" 
+                    WidthRequest="50" HeightRequest="50"  
+                    VerticalOptions="CenterAndExpand" 
+                    Image="ic_add_white.png" 
+                    ButtonColor="#03A9F4" 
+                    Clicked="Button_Clicked"/>
+    
+            
+           <!-- <Editor  Margin="10, 0, 10, 0" BackgroundColor="#CCCC00" Text="{Binding Message}"></Editor>
         <Button BackgroundColor="Teal"
                 Command="{Binding AddNewItemCommand}"
                 Text="Submit"
                 TextColor="White"
                 WidthRequest="120"
                 Margin="10, 0, 10, 20"
-                />
+                />-->
 
 
     </StackLayout>
