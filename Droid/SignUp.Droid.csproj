@@ -168,9 +168,9 @@
     <Compile Include="CustomRenderers\FacebookLoginButtonRenderer.cs" />
     <Compile Include="FacebookHelper\FacebookCallback.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="Dependency\AndroidFacebookService.cs" />
     <Compile Include="CustomRenderers\MainPageRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
+    <Compile Include="Dependency\AndroidFacebookService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -197,7 +197,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_group.png" />
     <AndroidResource Include="Resources\drawable\ic_event.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_event.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_event.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_event.png" />
     <AndroidResource Include="Resources\drawable\ic_message.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_message.png" />
@@ -207,6 +206,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_event.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />
