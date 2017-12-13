@@ -208,6 +208,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_event.png" />
+    <AndroidResource Include="Resources\drawable\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_white.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />

@@ -5,22 +5,46 @@
     x:Class="SignUp.Pages.ForumPage"
     xmlns:custom="clr-namespace:SignUp.PCL.CustomControls;assembly=SignUp.PCL"
     >
-	<ContentPage.Content>
-        <StackLayout HorizontalOptions="StartAndExpand" Margin="20, 0, 20, 0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Label 
+                Grid.Row="0" 
+                Text="FAB3" 
+                HorizontalTextAlignment="Center" 
+                VerticalTextAlignment="Center" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                BackgroundColor="LightGray"
+                TextColor="CadetBlue" 
+        />
+    
+        <AbsoluteLayout Grid.Row="1">
               <ListView
-                        SeparatorVisibility="Default"
+                        SeparatorVisibility="None"
                         HasUnevenRows="true"
                         BackgroundColor="White"
+                
                         CachingStrategy="RecycleElement"
                         IsPullToRefreshEnabled="True"
                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                         ItemsSource="{Binding Items}"
                         RefreshCommand="{Binding RefreshCommand}"
                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,1,1,1"
+                        VerticalOptions="FillAndExpand"
+                >
+
+                
                 <ListView.ItemTemplate>
                   <DataTemplate>
-                    <ViewCell>
-                      <StackLayout Padding="0, 5, 0, 15" HorizontalOptions="Fill" Orientation="Horizontal">
+                    <ViewCell> 
+                      <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                                 
                                 <custom:ImageCircle 
                                         Source="{Binding ImageUrl}" 
@@ -40,7 +64,7 @@
                                     </StackLayout>
                                     <Label HorizontalOptions="StartAndExpand" Text="{Binding Message}" FontSize="14"></Label>
                                 </StackLayout>
-                                
+
                       </StackLayout>
                     </ViewCell>
                   </DataTemplate>
@@ -48,13 +72,15 @@
               </ListView>
 
               <custom:FloatingActionButton 
-                    x:Name="FAB" 
-                    HorizontalOptions="CenterAndExpand" 
-                    WidthRequest="50" HeightRequest="50"  
-                    VerticalOptions="CenterAndExpand" 
+                    x:Name="FAB"  
                     Image="ic_add_white.png" 
                     ButtonColor="#03A9F4" 
-                    Clicked="Button_Clicked"/>
+                    Clicked="Button_Clicked"
+
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1.0,1.0,-1,-1"
+                    Margin="10"
+            />
     
             
            <!-- <Editor  Margin="10, 0, 10, 0" BackgroundColor="#CCCC00" Text="{Binding Message}"></Editor>
@@ -67,6 +93,8 @@
                 />-->
 
 
-    </StackLayout>
-	</ContentPage.Content>
+    </AbsoluteLayout>
+
+        </Grid>
+	
 </ContentPage>
