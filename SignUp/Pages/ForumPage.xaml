@@ -11,90 +11,67 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
-        <Label 
-                Grid.Row="0" 
-                Text="FAB3" 
-                HorizontalTextAlignment="Center" 
-                VerticalTextAlignment="Center" 
-                FontSize="24" 
-                FontAttributes="Bold" 
-                BackgroundColor="LightGray"
-                TextColor="CadetBlue" 
-        />
-    
+        <Label Grid.Row="0" Text="FAB" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="24" FontAttributes="Bold" BackgroundColor="LightGray"
+               TextColor="CadetBlue" />
         <AbsoluteLayout Grid.Row="1">
-              <ListView
-                        SeparatorVisibility="None"
-                        HasUnevenRows="true"
-                        BackgroundColor="White"
-                
-                        CachingStrategy="RecycleElement"
-                        IsPullToRefreshEnabled="True"
-                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                        ItemsSource="{Binding Items}"
-                        RefreshCommand="{Binding RefreshCommand}"
-                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView  Margin="5, 0, 5, 0"
 
                         AbsoluteLayout.LayoutFlags="All"
                         AbsoluteLayout.LayoutBounds="0,1,1,1"
                         VerticalOptions="FillAndExpand"
-                >
-
                 
+                        ItemsSource="{Binding Items}"
+                        SeparatorVisibility="None"
+                        HasUnevenRows="true"
+                        BackgroundColor="White"
+
+                >
                 <ListView.ItemTemplate>
-                  <DataTemplate>
-                    <ViewCell> 
-                      <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
-                                
-                                <custom:ImageCircle 
-                                        Source="{Binding ImageUrl}" 
-                                        HeightRequest="50" 
-                                        WidthRequest="50" 
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Start"
-                                        BorderColor="#CC4422"
-                                        BorderThickness="2"
-                                >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:ImageCircle
+                                    Source="{Binding ImageUrl}"
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+                                    BorderColor="#CC4422"
+                                    BorderThickness="2"
+                                    >
                                 </custom:ImageCircle>
-                          
+
                                 <StackLayout Margin="10, 0, 0, 0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="16" />
-                                        <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="12" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                                        <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="16"></Label>
+                                        <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="12" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
                                     </StackLayout>
                                     <Label HorizontalOptions="StartAndExpand" Text="{Binding Message}" FontSize="14"></Label>
                                 </StackLayout>
 
-                      </StackLayout>
-                    </ViewCell>
-                  </DataTemplate>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
                 </ListView.ItemTemplate>
-              </ListView>
+            </ListView>
 
-              <custom:FloatingActionButton 
-                    x:Name="FAB"  
-                    Image="ic_add_white.png" 
-                    ButtonColor="#03A9F4" 
-                    Clicked="Button_Clicked"
+           <custom:FloatingActionButton 
+                x:Name="FAB" 
 
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="1.0,1.0,-1,-1"
-                    Margin="10"
+                Image="ic_add_white.png"
+                ButtonColor="#03A9F4" 
+                Clicked="Button_Clicked"
+
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        AbsoluteLayout.LayoutBounds="1.0,1.0,-1,-1"
+                Margin="10"
+
+
             />
-    
+
             
-           <!-- <Editor  Margin="10, 0, 10, 0" BackgroundColor="#CCCC00" Text="{Binding Message}"></Editor>
-        <Button BackgroundColor="Teal"
-                Command="{Binding AddNewItemCommand}"
-                Text="Submit"
-                TextColor="White"
-                WidthRequest="120"
-                Margin="10, 0, 10, 20"
-                />-->
 
-
-    </AbsoluteLayout>
-
-        </Grid>
+        </AbsoluteLayout>
+    </Grid>
 	
 </ContentPage>
