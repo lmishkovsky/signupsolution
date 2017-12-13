@@ -14,8 +14,7 @@
         <Label Grid.Row="0" Text="FAB" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="24" FontAttributes="Bold" BackgroundColor="LightGray"
                TextColor="CadetBlue" />
         <AbsoluteLayout Grid.Row="1">
-            <ListView  Margin="5, 0, 5, 0"
-
+            <ListView  
                         AbsoluteLayout.LayoutFlags="All"
                         AbsoluteLayout.LayoutBounds="0,1,1,1"
                         VerticalOptions="FillAndExpand"
@@ -29,7 +28,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Margin="5, 0, 5, 0">
                                 <custom:ImageCircle
                                     Source="{Binding ImageUrl}"
                                     HeightRequest="50"
