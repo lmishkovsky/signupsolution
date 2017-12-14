@@ -8,6 +8,7 @@ using Plugin.Settings;
 using Signup.Helpers;
 using SignUp.Abstractions;
 using SignUp.Models;
+using SignUp.Pages;
 using Xamarin.Forms;
 
 namespace SignUp.ViewModels
@@ -95,10 +96,9 @@ namespace SignUp.ViewModels
                         // save group code in user settings (so that user does not have to enter it every time)
                         CrossSettings.Current.AddOrUpdateValue(Constants.CrossSettingsKeys.GroupCode, GroupCode);
 
-                        Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.ShowSignupsPage(dtNextEventDate));
+                        //Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.ShowSignupsPage(dtNextEventDate));
 
-                        // navigate to next page
-                        // Application.Current.MainPage = new NavigationPage(new Pages.ShowSignupsPage(dtNextEventDate));
+                        Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new RootPage());
                     }
                     else {
                         //await DisplayAlert("Alert", "You have been alerted", "OK");

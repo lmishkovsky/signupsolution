@@ -30,19 +30,18 @@ namespace SignUp
 
             CloudService = new AzureCloudService();
 
-            var facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+            // try to obtain the group code from saved app settings
+            var groupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
 
-            // MainPage = new NavigationPage(new MessagesPage());
-
-            MainPage = new NavigationPage(new RootPage());
-
-            //if (string.IsNullOrEmpty(facebookID))
-            //{
-            //    MainPage = new NavigationPage(new LoginDependencyPage());
-            //}
-            //else {
-            //    MainPage = new NavigationPage(new GroupCodePage());
-            //}
+            if (string.IsNullOrEmpty(groupCode))
+            {
+                // we don't know in what group context to run the app, so send to the group code page
+                MainPage = new NavigationPage(new GroupCodePage());
+            }
+            else {
+                // if we know in what group context to run the app, send to the root tabbed page
+                MainPage = new NavigationPage(new RootPage(groupCode));
+            }
 		}
 
         /// <summary>

@@ -11,7 +11,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="FAB" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="24" FontAttributes="Bold" BackgroundColor="LightGray"
+        <Label Grid.Row="0" Text="FAB5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="24" FontAttributes="Bold" BackgroundColor="LightGray"
                TextColor="CadetBlue" />
         <AbsoluteLayout Grid.Row="1">
             <ListView  
@@ -40,7 +40,7 @@
                                     >
                                 </custom:ImageCircle>
 
-                                <StackLayout Margin="10, 0, 0, 0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <StackLayout Margin="5, 0, 0, 15" Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Name}" TextColor="#CC4422" FontSize="16"></Label>
                                         <Label Text="{Binding UpdatedAtAsString}" TextColor="#CC4422" FontSize="12" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
