@@ -29,6 +29,17 @@ namespace SignUp.ViewModels
 			}
         }
 
+        string nextEventDateString;
+        public string NextEventDateString{
+            get{
+                return "Next event: " + this.dtNextEventDate.ToLocalTime().ToString("ddd, dd MMM, HH:mm");
+            }
+            set {
+                nextEventDateString = value;
+                OnPropertyChanged("NextEventDateString");
+            }
+        }
+
 		string facebookID = string.Empty;
 		string facebookName = string.Empty;
 		string facebookEmail = string.Empty;
@@ -85,7 +96,7 @@ namespace SignUp.ViewModels
         /// Executes the refresh command.
         /// </summary>
         /// <returns>The refresh command.</returns>
-        async Task ExecuteRefreshCommand()
+        public async Task ExecuteRefreshCommand()
         {
             Contract.Ensures(Contract.Result<Task>() != null);
             if (IsBusy)
