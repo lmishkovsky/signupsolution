@@ -10,7 +10,6 @@ namespace SignUp.Pages
     /// </summary>
     public partial class ShowSignupsPage : ContentPage
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SignUp.Pages.ShowSignupsPage"/> class.
         /// </summary>
@@ -23,5 +22,19 @@ namespace SignUp.Pages
 
 			BindingContext = new ShowSignupsPageViewModel(dtNextEventDate);
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var bindingContext = this.BindingContext as ShowSignupsPageViewModel;
+
+            if (bindingContext == null)
+            {
+                return;
+            }
+
+            bindingContext.ExecuteRefreshCommand();
+        }
     }
 }
