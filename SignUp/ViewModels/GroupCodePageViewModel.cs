@@ -26,6 +26,14 @@ namespace SignUp.ViewModels
             Title = "Group Code";
 
             GroupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
+
+            if (string.IsNullOrEmpty(GroupCode))
+            {
+                
+            }
+            else {
+                ExecuteGroupCheckCommand();
+            }
         }
 
         Command btnCommand;
@@ -98,7 +106,7 @@ namespace SignUp.ViewModels
 
                         //Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.ShowSignupsPage(dtNextEventDate));
 
-                        Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new RootPage());
+                        Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new RootPage(dtNextEventDate));
                     }
                     else {
                         //await DisplayAlert("Alert", "You have been alerted", "OK");
