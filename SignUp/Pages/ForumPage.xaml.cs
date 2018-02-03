@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugin.Settings;
 using SignUp.ViewModels;
 using Xamarin.Forms;
 
@@ -40,8 +41,18 @@ namespace SignUp.Pages
         /// <param name="e">E.</param>
         public async void Button_Clicked(object sender, EventArgs e)
         {
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.NewMessage(dtNextEventDate));
             // await Application.Current.MainPage.DisplayAlert("FAB Clicked!", "Congrats on creating your FAB!", "Thanks!");
+
+            string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+
+            if (String.IsNullOrEmpty(facebookID))
+            {
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.LoginDependencyPage());
+            }
+            else
+            {
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.NewMessage(dtNextEventDate));
+            }
         }
 
         protected override void OnAppearing()
