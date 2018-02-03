@@ -77,7 +77,7 @@ namespace SignUp.ViewModels
 
             this.ButtonText = ADDME;
 
-            RefreshList();
+            //RefreshList();
         }
 
         /// <summary>
