@@ -22,7 +22,7 @@ namespace SignUp.Pages
         /// Constructor used from the App.xaml.cs class
         /// </summary>
         /// <param name="groupCode">Group code.</param>
-        public RootPage(string groupCode)
+        public RootPage(DateTime dtNextEventDate)
         {
             InitializeComponent();
 
@@ -30,15 +30,15 @@ namespace SignUp.Pages
             // NavigationPage.SetHasNavigationBar(this, false);
 
             LoginDependencyPage accountPage = new LoginDependencyPage(); // new AccountPage();
-            GroupCodePage groupCodePage = new GroupCodePage();
-            ShowSignupsPage showSignupsPage = new ShowSignupsPage(DateTime.FromFileTimeUtc(131577444000000000));
-            ForumPage forumPage = new ForumPage(DateTime.FromFileTimeUtc(131577444000000000));
+            //GroupCodePage groupCodePage = new GroupCodePage();
+            ShowSignupsPage showSignupsPage = new ShowSignupsPage(dtNextEventDate);
+            ForumPage forumPage = new ForumPage(dtNextEventDate);
             //SettingsPage settingsPage = new SettingsPage();
 
-            Children.Add(accountPage);
-            Children.Add(groupCodePage);
             Children.Add(showSignupsPage);
             Children.Add(forumPage);
+            Children.Add(accountPage);
+            //Children.Add(groupCodePage);
             //Children.Add(settingsPage);
         }
     }
