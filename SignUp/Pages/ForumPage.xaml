@@ -11,8 +11,15 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="FAB5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="24" FontAttributes="Bold" BackgroundColor="LightGray"
-               TextColor="CadetBlue" />
+        <Label 
+            Grid.Row="0" 
+            Text="{Binding NextEventDateString}" 
+            HorizontalTextAlignment="Center" 
+            VerticalTextAlignment="Center" 
+            FontSize="24" 
+            FontAttributes="Bold" 
+            BackgroundColor="LightGray"
+            TextColor="CadetBlue" />
         <AbsoluteLayout Grid.Row="1">
             <ListView  
                         AbsoluteLayout.LayoutFlags="All"
@@ -24,6 +31,9 @@
                         HasUnevenRows="true"
                         BackgroundColor="White"
 
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
