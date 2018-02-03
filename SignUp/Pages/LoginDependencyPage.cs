@@ -78,11 +78,11 @@ namespace SignUp.Pages
 				stackLayout.Children.Add(loginButton);
 			}
 
-            stackLayout.Children.Add(_btnNext);
+            //stackLayout.Children.Add(_btnNext);
 
 			Content = stackLayout;
 
-            // GoToGroupPageIfAlreadyLoggedIn();
+            GoToGroupPageIfAlreadyLoggedIn();
 		}
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace SignUp.Pages
                 _isAuthenticated = true;
                 _btnNext.IsVisible = true;
 
-                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
+                // Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SignUp.Pages.GroupCodePage());
             }
         }
 
