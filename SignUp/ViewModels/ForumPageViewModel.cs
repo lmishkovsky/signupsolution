@@ -31,6 +31,20 @@ namespace SignUp.ViewModels
 			}
 		}
 
+        string nextEventDateString;
+        public string NextEventDateString
+        {
+            get
+            {
+                return "Next event: " + this.dtNextEventDate.ToLocalTime().ToString("ddd, dd MMM, HH:mm");
+            }
+            set
+            {
+                nextEventDateString = value;
+                OnPropertyChanged("NextEventDateString");
+            }
+        }
+
         /// <summary>
         /// The items.
         /// </summary>
@@ -144,7 +158,7 @@ namespace SignUp.ViewModels
         /// Executes the refresh command.
         /// </summary>
         /// <returns>The refresh command.</returns>
-        async Task ExecuteRefreshCommand()
+        public async Task ExecuteRefreshCommand()
         {
             if (IsBusy)
             {
