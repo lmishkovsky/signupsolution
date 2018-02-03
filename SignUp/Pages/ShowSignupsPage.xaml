@@ -7,7 +7,19 @@
 >
     <ContentPage.Content>
         <StackLayout>
-      <ListView BackgroundColor="#7F7F7F"
+      <Label 
+            Text="{Binding NextEventDateString}"
+            Margin="0, 0, 0, 0"
+            TextColor="CadetBlue"
+            FontSize="24" 
+            FontAttributes="Bold" 
+            BackgroundColor="LightGray"
+            HeightRequest="60"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+      >
+      </Label>
+      <ListView BackgroundColor="White"
                 CachingStrategy="RecycleElement"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
@@ -46,12 +58,14 @@
                 WidthRequest="120"
                 Margin="0, 15, 0, 20"
                 />
-                <Button BackgroundColor="Teal"
-                Command="{Binding RedirectCommand}"
-                Text="Messages"
-                TextColor="White"
-                WidthRequest="120"
-                Margin="0, 15, 0, 20"
+                <Button 
+                    IsVisible = "false"
+                    BackgroundColor="Teal"
+                    Command="{Binding RedirectCommand}"
+                    Text="Messages"
+                    TextColor="White"
+                    WidthRequest="120"
+                    Margin="0, 15, 0, 20"
                 />
       </StackLayout>
     </StackLayout>
