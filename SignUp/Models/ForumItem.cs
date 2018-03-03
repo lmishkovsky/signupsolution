@@ -6,7 +6,10 @@ namespace SignUp.Models
 {
     public class ForumItem : RowData
     {
-        private string imageUrl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c33.33.414.414/s200x200/309820_10150436546956385_1524143185_n.jpg?oh=c79858eece7e33e96f577ac9a9cf3d40&oe=5A93D59F";
+        /// <summary>
+        /// "https://scontent.xx.fbcdn.net/v/t1.0-1/c33.33.414.414/s200x200/309820_10150436546956385_1524143185_n.jpg?oh=c79858eece7e33e96f577ac9a9cf3d40&oe=5A93D59F"
+        /// </summary>
+        public string ImageUrl  { get; set; }
 
         public string GroupCode { get; set; }
 
@@ -21,19 +24,6 @@ namespace SignUp.Models
         public string Message { get; set; }
 
         // properties below are used strictly for display purposes
-
-        [JsonIgnore]
-        public string ImageUrl
-        {
-            get
-            {
-                return this.imageUrl;
-            }
-            set
-            {
-                this.imageUrl = value;
-            }
-        }
 
         [JsonIgnore]
         public string UpdatedAtAsString { get; set; }

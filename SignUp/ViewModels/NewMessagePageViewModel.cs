@@ -17,6 +17,7 @@ namespace SignUp.ViewModels
         string facebookName = string.Empty;
         string facebookEmail = string.Empty;
         string groupCode = string.Empty;
+        string imageUrl = string.Empty;
         DateTime dtNextEventDate;
 
         string message = "Type your message here.";
@@ -39,6 +40,7 @@ namespace SignUp.ViewModels
             this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
             this.facebookEmail = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookEmail, string.Empty);
             this.groupCode = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.GroupCode, string.Empty);
+            this.imageUrl = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookImage, string.Empty);
 
             this.dtNextEventDate = dtNextEventDate;
         }
@@ -69,6 +71,7 @@ namespace SignUp.ViewModels
                 newPost.Email = this.facebookEmail;
                 newPost.EventDate = this.dtNextEventDate;
                 newPost.Message = this.Message;
+                newPost.ImageUrl = this.imageUrl;
 
                 // add the new signup
                 await table.CreateItemAsync(newPost);
