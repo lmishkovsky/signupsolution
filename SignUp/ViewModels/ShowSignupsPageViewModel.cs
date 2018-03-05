@@ -159,6 +159,15 @@ namespace SignUp.ViewModels
 
 			try
 			{
+                facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, "n/a");
+
+                if (String.IsNullOrEmpty(facebookID))
+                {
+                    await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.LoginDependencyPage());
+
+                    return;
+                }
+
 				var table = App.CloudService.GetTable<SignupItem>();
 
 				// query for this event and user

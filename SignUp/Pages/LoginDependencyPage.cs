@@ -24,6 +24,9 @@ namespace SignUp.Pages
 		readonly List<Button> _loginButtons = new List<Button>();
 		bool _isAuthenticated;
 
+        // var providers = new[] { "Facebook", "VK", "Microsoft" };
+        string[] providers = new string[1] { "Facebook" };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SignUp.Pages.LoginDependencyPage"/> class.
         /// </summary>
@@ -58,10 +61,6 @@ namespace SignUp.Pages
 				VerticalOptions = LayoutOptions.Center,
                 Children = { _hintLabel, _imageProfile }
 			};
-
-			// var providers = new[] { "Facebook", "VK", "Microsoft" };
-
-            var providers = new[] { "Facebook" };
 
 			foreach (var provider in providers)
 			{
@@ -206,6 +205,35 @@ namespace SignUp.Pages
                 await Application.Current.MainPage.DisplayAlert("Alert", ex.ToString(), "OK");
             }
 		}
+
+        /// <summary>
+        /// Ons the appearing.
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            string name = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
+            string imageUrl = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookImage, string.Empty);
+
+            if (!String.IsNullOrEmpty(imageUrl))
+            {
+                _imageProfile.Source = imageUrl;
+                _imageProfile.WidthRequest = 200;
+                _imageProfile.HeightRequest = 200;
+
+                _hintLabel.Text = $"Hi {name}!";
+
+                for (int i = 0; i < providers.Length; i++)
+                {
+                    var provider = providers[i];
+
+                    var loginButton = _loginButtons[i];
+
+                    loginButton.Text = "Logout " + provider;
+                }
+            }
+        }
 
 		Task<LoginResult> Login(string providerName)
 		{

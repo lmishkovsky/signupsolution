@@ -43,7 +43,7 @@ namespace SignUp.Pages
         {
             // await Application.Current.MainPage.DisplayAlert("FAB Clicked!", "Congrats on creating your FAB!", "Thanks!");
 
-            string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+            string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, "n/a");
 
             if (String.IsNullOrEmpty(facebookID))
             {
