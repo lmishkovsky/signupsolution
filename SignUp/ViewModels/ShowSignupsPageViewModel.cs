@@ -161,7 +161,9 @@ namespace SignUp.ViewModels
 			{
                 facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, "n/a");
 
-                if (String.IsNullOrEmpty(facebookID))
+                // await Application.Current.MainPage.DisplayAlert("facebookID", facebookID, "OK");
+
+                if (String.IsNullOrEmpty(facebookID) || facebookID.Equals("n/a"))
                 {
                     await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.LoginDependencyPage());
 
@@ -198,6 +200,11 @@ namespace SignUp.ViewModels
                     }
                     else
                     {
+                        // refresh these values again as they stay empty if we are coming from the login screen
+                        this.facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, string.Empty);
+                        this.facebookName = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookName, string.Empty);
+                        this.facebookEmail = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookEmail, string.Empty);
+
                         // prepare the new entry 
                         SignupItem newSignup = new SignupItem();
                         newSignup.GroupCode = this.groupCode;

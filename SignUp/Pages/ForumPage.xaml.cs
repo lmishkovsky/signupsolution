@@ -45,7 +45,7 @@ namespace SignUp.Pages
 
             string facebookID = CrossSettings.Current.GetValueOrDefault(Constants.CrossSettingsKeys.FacebookID, "n/a");
 
-            if (String.IsNullOrEmpty(facebookID))
+            if (String.IsNullOrEmpty(facebookID) || facebookID.Equals("n/a"))
             {
                 await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new Pages.LoginDependencyPage());
             }
