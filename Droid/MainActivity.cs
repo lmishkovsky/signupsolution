@@ -7,7 +7,7 @@ using SignUp.Droid.Dependency;
 
 namespace SignUp.Droid
 {
-    [Activity(Label = "SignUp.Droid"
+    [Activity(Label = "SignUp"
               , Icon = "@drawable/icon"
               , Theme = "@style/MyTheme"
               , MainLauncher = true
