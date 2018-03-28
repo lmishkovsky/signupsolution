@@ -176,7 +176,7 @@ namespace SignUp.Pages
                         case LoginState.Success:
                             _hintLabel.Text = $"Hi {loginResult.FirstName}!";
                             senderBtn.Text = $"Logout {senderBtn.AutomationId}";
-							_imageProfile.Source = loginResult.ImageUrl;
+                            _imageProfile.Source = loginResult.ImageUrl;
 							_imageProfile.WidthRequest = 200;
 							_imageProfile.HeightRequest = 200;
 

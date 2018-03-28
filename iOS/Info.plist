@@ -8,8 +8,6 @@
 	<string>SignUp</string>
 	<key>CFBundleIdentifier</key>
 	<string>solutions.brightsoft.SignUp</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -60,7 +58,14 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.6</string>
+	<string>2.0.0</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
